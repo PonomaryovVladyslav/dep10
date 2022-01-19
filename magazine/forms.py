@@ -5,8 +5,6 @@ from django.forms import ModelForm
 from magazine.models import Product, ObjectBuyProduct, PurchaseReturn
 
 from .models import MyUser
-import pdb
-pdb.set_trace()
 
 
 class SignUpForm(UserCreationForm):

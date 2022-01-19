@@ -46,6 +46,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
    os.path.join(BASE_DIR, "static"),
 ]
+
+STATIC_ROOT = 'staticroot'
+
 LOGIN_REDIRECT_URL = '/'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -84,9 +87,9 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'new_magazine',
-        'USER': 'postgres',
-        'PASSWORD': '1',
+        'NAME': 'depdb',
+        'USER': 'depuser',
+        'PASSWORD': 'mypass',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -129,9 +132,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+if os.environ.get('PROD'):
+    try:
+        from .settings_prod import *
+    except ImportError:
+        pass
+else:
+    try:
+        from .settings_local import *
+    except ImportError:
+        pass
