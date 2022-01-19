@@ -44,10 +44,10 @@ INSTALLED_APPS = [
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-   os.path.join(BASE_DIR, "static"),
+   os.path.join(BASE_DIR, "static_base"),
 ]
 
-STATIC_ROOT = 'staticroot'
+STATIC_ROOT = 'static'
 
 LOGIN_REDIRECT_URL = '/'
 MIDDLEWARE = [
