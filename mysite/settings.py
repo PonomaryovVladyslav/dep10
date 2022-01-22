@@ -151,9 +151,9 @@ class MediaStorage(S3Boto3Storage):
     location = 'media'
 
 
-STATICFILES_STORAGE = StaticStorage
+STATICFILES_STORAGE = 'StaticStorage'
 
-DEFAULT_FILE_STORAGE = MediaStorage
+DEFAULT_FILE_STORAGE = 'MediaStorage'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
